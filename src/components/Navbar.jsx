@@ -1,27 +1,70 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Importieren Sie Link aus 'react-router-dom' für die Seitenverlinkung
-import '../index.css';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <div className="flex justify-center">
-      <ul className="menu menu-horizontal bg-base-200 rounded-box mt-6">
-        <li>
-          <Link to="/dashboard" className="tooltip" data-tip="Home"> {/* Verwenden Sie Link und setzen Sie den 'to'-Attribut auf den Pfad der Startseite */}
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-          </Link>
-        </li>
-        <li>
-          <Link to="/health" className="tooltip" data-tip="Details"> {/* Setzen Sie den 'to'-Attribut auf den Pfad der Detailsseite */}
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          </Link>
-        </li>
-        <li>
-          <Link to="/" className="tooltip" data-tip="Stats"> {/* Setzen Sie den 'to'-Attribut auf den Pfad der Statistikseite */}
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-          </Link>
-        </li>
-      </ul>
+    <div className="navbar bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
+          <ul
+            tabIndex={0}
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-box w-52"
+          >
+            <li>
+              <Link to="/">Übersicht</Link>
+            </li>
+            <li>
+              <Link to="/health">Gesundheit</Link>
+            </li>
+            <li>
+              <Link to="/savings">Sparziele</Link>
+            </li>
+          </ul>
+        </div>
+        <Link to="/" className="btn btn-ghost normal-case text-xl flex items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            className="w-6 h-6 mr-2 fill-current text-white"
+          >
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+            <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" />
+          </svg>
+          Rauchfrei
+        </Link>
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <Link to="/">Übersicht</Link>
+          </li>
+          <li>
+            <Link to="/health">Gesundheit</Link>
+          </li>
+          <li>
+            <Link to="/savings">Sparziele</Link>
+          </li>
+        </ul>
+      </div>
+      <div className="navbar-end">
+        <Link to="/settings" className="btn btn-ghost">Einstellungen</Link>
+      </div>
     </div>
   );
 };
