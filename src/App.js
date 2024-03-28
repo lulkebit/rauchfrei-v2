@@ -36,19 +36,19 @@ function App() {
     <div>
       <Navbar handleNavLinkClick={handleNavLinkClick} /> {/* Render the Navbar component */}
       
-      <section id="section1" className="h-screen bg-gray-100 animate__animated animate__fadeIn">
+      <section id="section1" className="h-screen bg-gray-100">
         <Dashboard/>
       </section>
 
-      <section id="section2" className="h-screen bg-green-200 animate__animated animate__fadeIn">
+      <section id="section2" className="h-screen bg-green-200">
         <Health/>
       </section>
 
-      <section id="section3" className="h-screen bg-yellow-200 animate__animated animate__fadeIn">
+      <section id="section3" className="h-screen bg-yellow-200">
         <SavingGoals/>
       </section>
 
-      <section id="section4" className="h-screen bg-yellow-200 animate__animated animate__fadeIn">
+      <section id="section4" className="h-screen bg-yellow-200">
         <Settings/>
       </section>
     </div>
