@@ -5,6 +5,7 @@ import 'daisyui/dist/full.css';
 import Card from '../components/cards/Card';
 import FunFactCard from '../components/cards/FunFactCard';
 import SmokeFreeTimeCard from '../components/cards/SmokeFreeTimeCard';
+import FinancialCard from '../components/cards/FinancialCard';
 
 function LandingPage() {
   return (
@@ -15,8 +16,7 @@ function LandingPage() {
 
         <SmokeFreeTimeCard />
 
-        {/* Card 3 */}
-        <Card title="Card 3" content="This is the content of card 3." />
+        <FinancialCard />
 
         {/* Card 4 */}
         <Card title="Card 4" content="This is the content of card 4." />
