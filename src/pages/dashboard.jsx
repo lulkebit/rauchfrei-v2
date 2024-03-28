@@ -7,7 +7,7 @@ import SmokeFreeTimeCard from '../components/cards/SmokeFreeTimeCard';
 import FinancialCard from '../components/cards/FinancialCard';
 import ConsumeCard from '../components/cards/ConsumeCard';
 
-function LandingPage() {
+function Dashboard() {
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center mx-8">
       <h1 className="text-4xl font-bold mb-8">Welcome to Our Landing Page</h1>
@@ -27,4 +27,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default Dashboard;
