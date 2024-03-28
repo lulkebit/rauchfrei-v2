@@ -2,10 +2,10 @@ import React from 'react';
 import 'tailwindcss/tailwind.css';
 import 'daisyui/dist/full.css';
 
-import Card from '../components/cards/Card';
 import FunFactCard from '../components/cards/FunFactCard';
 import SmokeFreeTimeCard from '../components/cards/SmokeFreeTimeCard';
 import FinancialCard from '../components/cards/FinancialCard';
+import ConsumeCard from '../components/cards/ConsumeCard';
 
 function LandingPage() {
   return (
@@ -18,8 +18,7 @@ function LandingPage() {
 
         <FinancialCard />
 
-        {/* Card 4 */}
-        <Card title="Card 4" content="This is the content of card 4." />
+        <ConsumeCard />
       </div>
       <div className="mt-8 text-gray-600">
         Scroll down to continue exploring.
