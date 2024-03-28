@@ -1,11 +1,17 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from './Card';
 
 function SmokeFreeTimeCard() {
-  const [timeElapsed, setTimeElapsed] = useState(0);
-
-  // interval(); {* Vielleicht fix für delay? *}
+  const [timeElapsed, setTimeElapsed] = useState(() => {
+    const dateOfReturn = localStorage.getItem('dateOfReturn');
+    if (dateOfReturn) {
+      const startDate = new Date(dateOfReturn);
+      const currentDate = new Date();
+      const elapsedMilliseconds = currentDate - startDate;
+      return elapsedMilliseconds;
+    }
+    return 0; // If dateOfReturn is not set or invalid, return 0
+  });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -14,8 +20,8 @@ function SmokeFreeTimeCard() {
         const startDate = new Date(dateOfReturn);
         const currentDate = new Date();
         const elapsedMilliseconds = currentDate - startDate;
-        const days = Math.floor(elapsedMilliseconds / (1000 * 60 * 60 * 24));
         setTimeElapsed(elapsedMilliseconds);
+        const days = Math.floor(elapsedMilliseconds / (1000 * 60 * 60 * 24));
         localStorage.setItem('days', days);
       }
     }, 1000);

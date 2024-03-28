@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from './Card';
 
 function ConsumeCard() {
@@ -7,21 +6,18 @@ function ConsumeCard() {
     const [cigsResistedPerYear, setCigsResistedPerYear] = useState(0);
   
     useEffect(() => {
-      const interval = setInterval(() => {
         const days = localStorage.getItem('days');
         const cigsPerDay = localStorage.getItem('cigsPerDay');
         const cigsPerPack = localStorage.getItem('cigsPerPack');
         const pricePerPack = localStorage.getItem('pricePerPack');
-        if (days && cigsPerDay && cigsPerPack && pricePerPack) {
-          const totalCigsResistedTillNow = days * cigsPerDay;
-          const totalCigsResistedPerYear = cigsPerDay * 365;
 
-          setCigsResisted(totalCigsResistedTillNow);
-          setCigsResistedPerYear(totalCigsResistedPerYear);
+        if (days && cigsPerDay && cigsPerPack && pricePerPack) {
+            const totalCigsResistedTillNow = days * cigsPerDay;
+            const totalCigsResistedPerYear = cigsPerDay * 365;
+
+            setCigsResisted(totalCigsResistedTillNow);
+            setCigsResistedPerYear(totalCigsResistedPerYear);
         }
-      }, 1000);
-    
-      return () => clearInterval(interval);
     }, []);
     
     return (
