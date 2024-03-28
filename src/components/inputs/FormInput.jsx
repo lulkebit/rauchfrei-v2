@@ -30,7 +30,7 @@ function FormInput({ label, placeholder, type, name }) {
       <input
         type={type}
         placeholder={placeholder}
-        className="input input-bordered"
+        className="input input-bordered bg-white" // Add bg-white to override dark style
         value={inputValue}
         onFocus={handleFocus}
         onChange={handleChange}

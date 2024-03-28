@@ -6,8 +6,8 @@ import DateInput from '../components/inputs/DateInput';
 
 function Settings() {
   return (
-    <div className="min-h-screen bg-base-200 flex flex-col justify-center items-center">
-      <div className="max-w-2xl mx-auto bg-base-100 shadow-xl rounded-lg p-8" style={{ width: '800px' }}> {/* Nichtmehr responsive */}
+    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
+      <div className="max-w-2xl mx-auto bg-white shadow-xl rounded-lg p-8" style={{ width: '800px' }}> {/* Nichtmehr responsive */}
         <h1 className="text-4xl font-bold mb-8 text-center">Einstellungen</h1>
         <div>
           <h2 className="text-2xl font-bold mb-4">Konfiguration</h2>
