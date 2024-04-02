@@ -3,7 +3,7 @@ import Scrollspy from 'react-scrollspy';
 
 const Navbar = ({ handleNavLinkClick }) => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 flex justify-between items-center bg-gradient-to-r from-[#6AB04C] to-[#BADC58] text-gray-800 px-4 py-1">
+    <nav className="fixed top-0 left-0 right-0 z-10 flex justify-between items-center bg-gradient-to-r from-teal-400 via-green-500 to-emerald-600 text-gray-800 px-4 py-1">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -24,7 +24,7 @@ const Navbar = ({ handleNavLinkClick }) => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-6 p-2 shadow bg-gradient-to-r from-[#6AB04C] to-[#BADC58] rounded-box w-auto"
+            className="menu menu-compact dropdown-content mt-6 p-2 shadow bg-gradient-to-r from-teal-400 via-green-500 to-emerald-600 rounded-box w-auto"
           >
             <Scrollspy
               items={['section1', 'section2', 'section3', 'section4']}
