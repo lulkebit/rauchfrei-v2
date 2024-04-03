@@ -23,14 +23,14 @@ function FormInput({ label, placeholder, type, name }) {
   };
 
   return (
-    <div className="form-control">
-      <label className="label">
-        <span className="label-text">{label}</span>
+    <div className='form-control'>
+      <label className='label'>
+        <span className='label-text'>{label}</span>
       </label>
       <input
         type={type}
         placeholder={placeholder}
-        className="input input-bordered bg-white" // Add bg-white to override dark style
+        className='input input-bordered bg-white' // Add bg-white to override dark style
         value={inputValue}
         onFocus={handleFocus}
         onChange={handleChange}

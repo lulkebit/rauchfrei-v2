@@ -5,35 +5,34 @@
 @import 'daisyui/dist/full.css';
 
 .expand-enter {
-    opacity: 0;
-    height: 0;
-  }
-  
-  .expand-enter-active {
-    opacity: 1;
-    height: auto;
-    transition: opacity 300ms, height 300ms;
-  }
-  
-  .expand-exit {
-    opacity: 1;
-    height: auto;
-  }
-  
-  .expand-exit-active {
-    opacity: 0;
-    height: 0;
-    transition: opacity 300ms, height 300ms;
-  }
+  opacity: 0;
+  height: 0;
+}
 
-  /* For Webkit-based browsers (Chrome, Safari and Opera) */
+.expand-enter-active {
+  opacity: 1;
+  height: auto;
+  transition: opacity 300ms, height 300ms;
+}
+
+.expand-exit {
+  opacity: 1;
+  height: auto;
+}
+
+.expand-exit-active {
+  opacity: 0;
+  height: 0;
+  transition: opacity 300ms, height 300ms;
+}
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
 /* For IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-  
