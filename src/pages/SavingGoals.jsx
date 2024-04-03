@@ -61,7 +61,7 @@ const SavingGoals = () => {
   const moneySaved = packsSmoked * pricePerPack;
 
   return (
-    <div className='min-h-screen flex flex-col justify-center items-center'>
+    <div className='min-h-screen flex flex-col justify-center items-center mx-8'>
       <div
         className='max-w-2xl mx-auto bg-white shadow-xl rounded-lg p-8'
         style={{ width: '800px' }}

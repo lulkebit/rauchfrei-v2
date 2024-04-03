@@ -42,23 +42,38 @@ function App() {
 
   return (
     <div>
-      <Navbar handleNavLinkClick={handleNavLinkClick} />{' '}
-      {/* Render the Navbar component */}
+      <Navbar handleNavLinkClick={handleNavLinkClick} />
       <section id='section1' className='h-screen bg-gray-100'>
         <Dashboard />
       </section>
-      <div className='h-10 bg-gradient-to-b from-gray-100 to-green-200'></div>
-      <section id='section2' className='h-screen bg-green-200'>
-        <Health />
-      </section>
-      <div className='h-10 bg-gradient-to-b from-green-200 to-yellow-200'></div>
-      <section id='section3' className='h-screen bg-yellow-200'>
-        <SavingGoals />
-      </section>
-      <div className='h-10 bg-gradient-to-b from-yellow-200 to-red-200'></div>
-      <section id='section4' className='h-screen bg-red-200'>
-        <Settings />
-      </section>
+      <ul className='timeline timeline-vertical bg-gray-100'>
+        <li>
+          <hr className='bg-gradient-to-b from-emerald-600 via-green-500 to-teal-400' />
+          <div className='timeline-start'>
+            <section id='section2' className='h-screen bg-gray-100'>
+              <Health />
+            </section>
+          </div>
+          <hr className='bg-gradient-to-b from-teal-400 via-green-500 to-emerald-600' />
+        </li>
+        <li>
+          <hr className='bg-gradient-to-b from-emerald-600 via-green-500 to-teal-400' />
+          <div className='timeline-end'>
+            <section id='section3' className='h-screen bg-gray-100'>
+              <SavingGoals />
+            </section>
+          </div>
+          <hr className='bg-gradient-to-b from-teal-400 via-green-500 to-emerald-600' />
+        </li>
+        <li>
+          <hr className='bg-gradient-to-b from-emerald-600 via-green-500 to-teal-400' />
+          <div className='timeline-start'>
+            <section id='section4' className='h-screen bg-gray-100'>
+              <Settings />
+            </section>
+          </div>
+        </li>
+      </ul>
     </div>
   );
 }
