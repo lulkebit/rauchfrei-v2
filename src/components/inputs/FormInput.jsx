@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import '../../index.css';
 
 function FormInput({ label, placeholder, type, name }) {
   const [inputValue, setInputValue] = useState('');
 
-  // Load value from localStorage on component mount
   useEffect(() => {
     const storedValue = localStorage.getItem(name);
     if (storedValue !== null) {
@@ -18,7 +18,6 @@ function FormInput({ label, placeholder, type, name }) {
   const handleChange = (e) => {
     const newValue = e.target.value;
     setInputValue(newValue);
-    // Store value in localStorage
     localStorage.setItem(name, newValue);
   };
 
@@ -30,7 +29,7 @@ function FormInput({ label, placeholder, type, name }) {
       <input
         type={type}
         placeholder={placeholder}
-        className='input input-bordered bg-white' // Add bg-white to override dark style
+        className='input input-bordered bg-white text-black' // Add text-black to make the text color black
         value={inputValue}
         onFocus={handleFocus}
         onChange={handleChange}
