@@ -1,7 +1,21 @@
 import React from 'react';
 import Scrollspy from 'react-scrollspy';
+import { useElapsedTime } from './useElapsedTime';
 
 const Navbar = ({ handleNavLinkClick }) => {
+  const timeElapsed = useElapsedTime();
+
+  const formatTime = (milliseconds) => {
+    let seconds = Math.floor(milliseconds / 1000);
+    const days = Math.floor(seconds / (24 * 3600));
+    seconds %= 24 * 3600;
+    const hours = Math.floor(seconds / 3600);
+    seconds %= 3600;
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${days} Tage ${hours} Stunden ${minutes} Minuten ${remainingSeconds} Sekunden`;
+  };
+
   return (
     <nav className='fixed top-0 left-0 right-0 z-10 flex justify-between items-center bg-gradient-to-r from-teal-400 via-green-500 to-emerald-600 text-gray-800 px-4 py-1'>
       <div className='navbar-start'>
@@ -75,7 +89,10 @@ const Navbar = ({ handleNavLinkClick }) => {
           <b>Rauchfrei</b>
         </li>
       </div>
-      <div className='navbar-center hidden lg:flex'>
+      <div className='text-xs'>
+        <b>{formatTime(timeElapsed)}</b>
+      </div>
+      <div className='navbar-end hidden lg:flex'>
         <ul className='menu menu-horizontal px-1'>
           <Scrollspy
             items={['section1', 'section2', 'section3', 'section4']}
