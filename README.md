@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Rauchfrei Website Version 2
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Willkommen zur Version 2 unserer Rauchfrei Website! Diese neue Version bietet ein verbessertes Design und erweiterte Funktionen, um Sie auf Ihrem Weg zur Rauchfreiheit zu unterstützen.
 
-## Available Scripts
+## Über die Website
 
-In the project directory, you can run:
+Unsere Website ist ein hilfreiches Tool für alle, die den Wunsch haben, mit dem Rauchen aufzuhören. Sie bietet verschiedene Funktionen, um den Fortschritt Ihrer Rauchentwöhnung zu verfolgen und Sie zu motivieren.
 
-### `npm start`
+## Neue Funktionen
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In der Version 2 haben wir einige neue Funktionen hinzugefügt und bestehende Funktionen verbessert:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Neues Design:** Wir haben das Design der Website komplett überarbeitet, um eine verbesserte Benutzererfahrung zu bieten.
+- **Erweiterter Geldsparrechner:** Sehen Sie genau, wie viel Geld Sie durch das Aufhören mit dem Rauchen gespart haben.
+- **Erweiterte Gesundheitsverfolgung:** Erhalten Sie detailliertere Informationen darüber, wie sich Ihre Gesundheit seit dem Rauchstopp verbessert hat.
+- **Individuelle Sparziele:** Sie können nun individuelle Sparziele setzen und Ihren Fortschritt verfolgen.
 
-### `npm test`
+## Zukünftige Pläne
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Wir planen, in Zukunft weitere Verbesserungen und Funktionen hinzuzufügen, darunter:
 
-### `npm run build`
+- Implementierung von Firebase für eine verbesserte Datenverwaltung.
+- Weitere Personalisierungsoptionen für Sparziele.
+- Implementierung von Accounts
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Wir freuen uns, Sie auf Ihrem Weg zur Rauchfreiheit zu begleiten und hoffen, dass unsere Website Ihnen dabei hilft, Ihre Ziele zu erreichen. Vielen Dank, dass Sie sich für einen rauchfreien Lebensstil entschieden haben!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Screenshots
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Übersicht
 
-### `npm run eject`
+![Dashboard](screenshots/dashboard.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Gesundheit
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Health](screenshots/health.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![Health](screenshots/health2.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Sparen
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Savings](screenshots/savings.png)
