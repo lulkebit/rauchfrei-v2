@@ -6,7 +6,6 @@ import 'daisyui/dist/full.css';
 
 import Card from '../components/cards/Card';
 import ProgressBarTime from '../components/bars/ProgressBarTime';
-import HealthDrawer from '../components/drawers/HealthDrawer';
 
 const milestones = [
   {
