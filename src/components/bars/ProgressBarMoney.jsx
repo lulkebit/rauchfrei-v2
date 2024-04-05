@@ -26,7 +26,6 @@ const ProgressBarMoney = ({ goal, current }) => {
   const [timeLeft, setTimeLeft] = useState(0);
 
   useEffect(() => {
-    const days = localStorage.getItem('days');
     const cigsPerDay = localStorage.getItem('cigsPerDay');
     const cigsPerPack = localStorage.getItem('cigsPerPack');
     const pricePerPack = localStorage.getItem('pricePerPack');
