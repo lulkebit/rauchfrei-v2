@@ -1,6 +1,7 @@
 import React from 'react';
 import Scrollspy from 'react-scrollspy';
 import { useElapsedTime } from './useElapsedTime';
+import ProfileCard from './cards/ProfileCard';
 
 const Navbar = ({ handleNavLinkClick }) => {
   const timeElapsed = useElapsedTime();
@@ -128,6 +129,7 @@ const Navbar = ({ handleNavLinkClick }) => {
           </Scrollspy>
         </ul>
       </div>
+      <ProfileCard />
     </nav>
   );
 };
