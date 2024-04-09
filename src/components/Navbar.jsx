@@ -128,8 +128,8 @@ const Navbar = ({ handleNavLinkClick }) => {
             </li>
           </Scrollspy>
         </ul>
+        <ProfileCard />
       </div>
-      <ProfileCard />
     </nav>
   );
 };

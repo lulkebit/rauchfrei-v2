@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { AuthProvider } from './context/AuthContext';
 import {
   BrowserRouter as Router,
   Routes,
@@ -18,13 +17,11 @@ import PrivateRoute from './components/PrivateRoute';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
-    <AuthProvider>
-      <Routes>
-        <Route path='/dashboard' element={<PrivateRoute Component={App} />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
-        <Route exact path='/' element={<Navigate to='/dashboard' />} />
-      </Routes>
-    </AuthProvider>
+    <Routes>
+      <Route path='/dashboard' element={<PrivateRoute Component={App} />} />
+      <Route path='/signup' element={<Signup />} />
+      <Route path='/login' element={<Login />} />
+      <Route exact path='/' element={<Navigate to='/dashboard' />} />
+    </Routes>
   </Router>
 );
