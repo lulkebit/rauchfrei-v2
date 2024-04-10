@@ -1,14 +1,11 @@
 import React, { useRef, useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function SignUp() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup } = useAuth();
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
@@ -18,16 +15,17 @@ export default function SignUp() {
       return setError('Passwords do not match');
     }
 
-    try {
-      setError('');
-      setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
-      navigate('/');
-    } catch (e) {
-      setError(e.message);
-    }
+    setError('');
 
-    setLoading(false);
+    axios
+      .post('', emailRef.current.value, passwordRef.current.value)
+      .then((response) => {
+        console.log(response);
+        // navigate('/');
+      })
+      .catch((error) => {
+        setError(e.message);
+      });
   }
 
   return (
