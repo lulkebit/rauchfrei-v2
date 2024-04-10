@@ -7,6 +7,8 @@ export default function SignUp() {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const navigate = useNavigate();
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -16,9 +18,14 @@ export default function SignUp() {
     }
 
     setError('');
+    setLoading(true);
 
     axios
-      .post('', emailRef.current.value, passwordRef.current.value)
+      .post(
+        'http://localhost:3001/register',
+        emailRef.current.value,
+        passwordRef.current.value
+      )
       .then((response) => {
         console.log(response);
         // navigate('/');
@@ -26,6 +33,8 @@ export default function SignUp() {
       .catch((error) => {
         setError(e.message);
       });
+
+    setLoading(false);
   }
 
   return (
