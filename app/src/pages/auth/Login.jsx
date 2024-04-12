@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Login() {
   const emailRef = useRef();
@@ -8,17 +9,24 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
 
-    try {
-      setError('');
-      setLoading(true);
-      //await login(emailRef.current.value, passwordRef.current.value);
-      navigate('/');
-    } catch (e) {
-      setError(e.message);
-    }
+    setError('');
+    setLoading(true);
+
+    axios
+      .post('http://localhost:3001/login', {
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      })
+      .then((result) => {
+        if (result.data === 'Success') navigate('/');
+        else setError(result.data);
+      })
+      .catch((e) => {
+        setError(e.message);
+      });
 
     setLoading(false);
   }

@@ -10,7 +10,7 @@ export default function SignUp() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -21,16 +21,14 @@ export default function SignUp() {
     setLoading(true);
 
     axios
-      .post(
-        'http://localhost:3001/register',
-        emailRef.current.value,
-        passwordRef.current.value
-      )
-      .then((response) => {
-        console.log(response);
-        // navigate('/');
+      .post('http://localhost:3001/register', {
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
       })
-      .catch((error) => {
+      .then(() => {
+        navigate('/');
+      })
+      .catch((e) => {
         setError(e.message);
       });
 
