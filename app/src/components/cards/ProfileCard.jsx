@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
 
 export default function ProfileCard() {
   const [isProfileExpanded, setProfileExpanded] = useState(false);
-  const { currentUser, logout } = useAuth();
+  let currentUser = null;
+  const token = localStorage.getItem('token');
+  if (token) {
+    currentUser = jwtDecode(token);
+  }
   const navigate = useNavigate();
 
   async function handleLogout() {
     try {
-      await logout();
+      // await logout();
       navigate('/');
     } catch (e) {
       console.error(e.message);
