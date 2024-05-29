@@ -12,6 +12,10 @@ import './index.css';
 import App from './App';
 import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://localhost:8000';
+axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

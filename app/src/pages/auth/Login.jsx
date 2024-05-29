@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function Signup() {
   const [data, setData] = useState({
@@ -8,6 +9,7 @@ export default function Signup() {
 
   const loginUser = (event) => {
     event.preventDefault();
+    axios.get('/');
   };
 
   return (
