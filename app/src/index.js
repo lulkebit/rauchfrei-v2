@@ -14,13 +14,14 @@ import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
+import { UserContextProvider } from './context/userContext';
 
 axios.defaults.baseURL = 'http://localhost:8000';
 axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <>
+    <UserContextProvider>
         <Toaster position='bottom-right' toastDuration={{ duration: 2000 }} />
         <Router>
             <Routes>
@@ -30,5 +31,5 @@ root.render(
                 <Route exact path='/' element={<Navigate to='/dashboard' />} />
             </Routes>
         </Router>
-    </>
+    </UserContextProvider>
 );
