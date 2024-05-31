@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Navigate,
 } from 'react-router-dom';
 
 import './index.css';
@@ -20,15 +20,15 @@ axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <>
-    <Toaster position='bottom-right' toastDuration={{ duration: 2000 }} />
-    <Router>
-      <Routes>
-        <Route path='/dashboard' element={<App />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
-        <Route exact path='/' element={<Navigate to='/dashboard' />} />
-      </Routes>
-    </Router>
-  </>
+    <>
+        <Toaster position='bottom-right' toastDuration={{ duration: 2000 }} />
+        <Router>
+            <Routes>
+                <Route path='/dashboard' element={<App />} />
+                <Route path='/signup' element={<Signup />} />
+                <Route path='/login' element={<Login />} />
+                <Route exact path='/' element={<Navigate to='/dashboard' />} />
+            </Routes>
+        </Router>
+    </>
 );
