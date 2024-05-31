@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function Signup() {
   const [data, setData] = useState({
@@ -7,8 +8,16 @@ export default function Signup() {
     password: '',
   });
 
-  const registerUser = (event) => {
+  const registerUser = async (event) => {
     event.preventDefault();
+    const { name, email, password } = data;
+    try {
+      const { data } = await axios.post('/register', {
+        name,
+        email,
+        password,
+      });
+    } catch (error) {}
   };
 
   return (
