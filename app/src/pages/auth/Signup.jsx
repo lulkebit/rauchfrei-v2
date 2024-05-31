@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     name: '',
     email: '',
@@ -17,7 +20,18 @@ export default function Signup() {
         email,
         password,
       });
-    } catch (error) {}
+
+      if (data.error) {
+        return toast.error(data.error);
+      } else {
+        setData({});
+        toast.success('User registered successfully');
+        navigate('/login');
+      }
+    } catch (error) {
+      console.log('Error on registerUser', error);
+      toast.error('Error. Please try again.');
+    }
   };
 
   return (
