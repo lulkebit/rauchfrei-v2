@@ -132,6 +132,7 @@ const Navbar = ({ handleNavLinkClick }) => {
                             Einstellungen
                         </li>
                     </Scrollspy>
+                    <ProfileCard />
                 </ul>
             </div>
         </nav>

@@ -1,24 +1,10 @@
-import React, { useState } from 'react';
-import { jwtDecode } from 'jwt-decode';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../context/userContext';
 
 export default function ProfileCard() {
     const [isProfileExpanded, setProfileExpanded] = useState(false);
-    let currentUser = null;
-    const token = localStorage.getItem('token');
-    if (token) {
-        currentUser = jwtDecode(token);
-    }
-    const navigate = useNavigate();
-
-    async function handleLogout() {
-        try {
-            // await logout();
-            navigate('/');
-        } catch (e) {
-            console.error(e.message);
-        }
-    }
+    const user = useContext(UserContext);
 
     return (
         <div
@@ -27,7 +13,7 @@ export default function ProfileCard() {
             className='relative inline-block'
         >
             <img
-                src={currentUser ? currentUser.avatar : ''}
+                src={user ? user.avatar : ''}
                 alt='User avatar'
                 className='w-10 h-10 rounded-full'
             />
@@ -39,16 +25,12 @@ export default function ProfileCard() {
                         aria-orientation='vertical'
                         aria-labelledby='user-menu'
                     >
-                        {currentUser ? (
-                            <a
-                                className='block px-4 py-2 text-sm text-gray-700'
-                                role='menuitem'
-                            >
-                                {currentUser.email}
-                            </a>
-                        ) : (
-                            ''
-                        )}
+                        <a
+                            className='block px-4 py-2 text-sm text-gray-700'
+                            role='menuitem'
+                        >
+                            {user.name}
+                        </a>
                         <Link
                             to='/signup'
                             className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
@@ -63,13 +45,6 @@ export default function ProfileCard() {
                         >
                             Log In
                         </Link>
-                        <button
-                            onClick={handleLogout}
-                            className='block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
-                            role='menuitem'
-                        >
-                            Log Out
-                        </button>
                     </div>
                 </div>
             )}
