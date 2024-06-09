@@ -33,28 +33,52 @@ export default function Signup() {
     };
 
     return (
-        <div>
-            <form onSubmit={loginUser}>
-                <label>Email</label>
-                <input
-                    type='email'
-                    placeholder='enter email...'
-                    value={data.email}
-                    onChange={(event) => {
-                        setData({ ...data, email: event.target.value });
-                    }}
-                />
-                <label>Password</label>
-                <input
-                    type='password'
-                    placeholder='enter password...'
-                    value={data.password}
-                    onChange={(event) => {
-                        setData({ ...data, password: event.target.value });
-                    }}
-                />
-                <button type='submit'>Login</button>
-            </form>
+        <div className='min-h-screen bg-gray-100 flex items-center justify-center'>
+            <div
+                className='card flex-shrink-0 w-full max-w-sm bg-white'
+                style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)' }}
+            >
+                <form onSubmit={loginUser} className='card-body'>
+                    <div className='form-control'>
+                        <label className='label'>
+                            <span className='label-text text-black'>Email</span>
+                        </label>
+                        <input
+                            type='email'
+                            placeholder='Enter your email'
+                            value={data.email}
+                            onChange={(event) => {
+                                setData({ ...data, email: event.target.value });
+                            }}
+                            className='input input-bordered'
+                        />
+                    </div>
+                    <div className='form-control'>
+                        <label className='label'>
+                            <span className='label-text text-black'>
+                                Password
+                            </span>
+                        </label>
+                        <input
+                            type='password'
+                            placeholder='Enter your password'
+                            value={data.password}
+                            onChange={(event) => {
+                                setData({
+                                    ...data,
+                                    password: event.target.value,
+                                });
+                            }}
+                            className='input input-bordered'
+                        />
+                    </div>
+                    <div className='form-control mt-6'>
+                        <button className='w-full text-center bg-teal-400 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded'>
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }
