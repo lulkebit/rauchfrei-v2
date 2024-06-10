@@ -11,7 +11,7 @@ const userSchema = new Schema({
     cigsPerDay: Number,
     cigsPerPack: Number,
     pricePerPack: Number,
-    dateOfReturn: Number,
+    dateOfReturn: Date,
 });
 
 const UserModel = mongoose.model('User', userSchema);

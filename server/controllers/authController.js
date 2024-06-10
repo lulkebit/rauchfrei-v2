@@ -4,7 +4,15 @@ const jwt = require('jsonwebtoken');
 
 const registerUser = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const {
+            name,
+            email,
+            password,
+            cigsPerDay,
+            cigsPerPack,
+            pricePerPack,
+            dateOfReturn,
+        } = req.body;
         // check if name was entered
         if (!name) {
             return res.json({
@@ -27,16 +35,22 @@ const registerUser = async (req, res) => {
             });
         }
 
+        if (!cigsPerDay || !cigsPerPack || !pricePerPack || !dateOfReturn) {
+            return res.json({
+                error: 'Please enter all fields',
+            });
+        }
+
         const hashedPassword = await hashPassword(password);
         // create user in database
         const user = await User.create({
             name,
             email,
             password: hashedPassword,
-            cigsPerDay: null,
-            cigsPerPack: null,
-            pricePerPack: null,
-            dateOfReturn: null,
+            cigsPerDay,
+            cigsPerPack,
+            pricePerPack,
+            dateOfReturn,
         });
 
         return res.json(user);
