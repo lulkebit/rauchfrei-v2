@@ -78,7 +78,15 @@ const loginUser = async (req, res) => {
         const match = await comparePassword(password, user.password);
         if (match) {
             jwt.sign(
-                { email: user.email, id: user._id, name: user.name },
+                {
+                    email: user.email,
+                    id: user._id,
+                    name: user.name,
+                    cigsPerDay: user.cigsPerDay,
+                    cigsPerPack: user.cigsPerPack,
+                    pricePerPack: user.pricePerPack,
+                    dateOfReturn: user.dateOfReturn,
+                },
                 process.env.JWT_SECRET,
                 {},
                 (err, token) => {
@@ -103,7 +111,10 @@ const getProfile = (req, res) => {
     const { token } = req.cookies;
     if (token) {
         jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
-            if (err) throw err;
+            if (err) {
+                // If the token is invalid or expired
+                return res.json({ error: 'Invalid token' });
+            }
             res.json(user);
         });
     } else {
