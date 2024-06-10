@@ -8,6 +8,10 @@ const userSchema = new Schema({
         unique: true,
     },
     password: String,
+    cigsPerDay: Number,
+    cigsPerPack: Number,
+    pricePerPack: Number,
+    dateOfReturn: Number,
 });
 
 const UserModel = mongoose.model('User', userSchema);

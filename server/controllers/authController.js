@@ -33,6 +33,10 @@ const registerUser = async (req, res) => {
             name,
             email,
             password: hashedPassword,
+            cigsPerDay: null,
+            cigsPerPack: null,
+            pricePerPack: null,
+            dateOfReturn: null,
         });
 
         return res.json(user);
@@ -93,8 +97,39 @@ const getProfile = (req, res) => {
     }
 };
 
+const updateUser = async (req, res) => {
+    try {
+        const { days, cigsPerDay, cigsPerPack, pricePerPack } = req.body;
+        const { token } = req.cookies;
+        if (token) {
+            jwt.verify(token, process.env.JWT_SECRET, {}, async (err, user) => {
+                if (err) throw err;
+                const updatedUser = await User.findByIdAndUpdate(
+                    user.id,
+                    {
+                        cigsPerDay,
+                        cigsPerPack,
+                        pricePerPack,
+                        dateOfReturn,
+                    },
+                    { new: true }
+                );
+                res.json(updatedUser);
+            });
+        } else {
+            res.json('No token found');
+        }
+    } catch (error) {
+        console.log('Error on updateUser', error);
+        return res.json({
+            error: 'Error. Please try again.',
+        });
+    }
+};
+
 module.exports = {
     registerUser,
     loginUser,
     getProfile,
+    updateUser,
 };
