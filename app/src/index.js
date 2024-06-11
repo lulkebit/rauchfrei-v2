@@ -15,6 +15,7 @@ import Login from './pages/auth/Login';
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 import { UserContextProvider } from './context/userContext';
+import Debug from './pages/auth/debug';
 
 axios.defaults.baseURL = 'http://localhost:8000';
 axios.defaults.withCredentials = true;
@@ -28,6 +29,7 @@ root.render(
                 <Route path='/dashboard' element={<App />} />
                 <Route path='/signup' element={<Signup />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='/debug' element={<Debug />} />
                 <Route exact path='/' element={<Navigate to='/dashboard' />} />
             </Routes>
         </Router>
