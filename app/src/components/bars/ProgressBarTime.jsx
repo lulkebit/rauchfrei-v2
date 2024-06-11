@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../../context/userContext';
 
 const ProgressBarTime = ({ minutes }) => {
+    const user = useContext(UserContext);
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
         const updateProgress = () => {
-            const dateOfReturn = localStorage.getItem('dateOfReturn');
+            const dateOfReturn = user.dateOfReturn;
             if (dateOfReturn) {
                 const currentDate = new Date();
                 const returnDate = new Date(dateOfReturn);

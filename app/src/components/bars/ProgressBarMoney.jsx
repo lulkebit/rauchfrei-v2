@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../../context/userContext';
 
 function convertMinutesToTimeFormat(minutes) {
     const timeUnits = [
@@ -23,12 +24,13 @@ function convertMinutesToTimeFormat(minutes) {
 }
 
 const ProgressBarMoney = ({ goal, current }) => {
+    const user = useContext(UserContext);
     const [timeLeft, setTimeLeft] = useState(0);
 
     useEffect(() => {
-        const cigsPerDay = localStorage.getItem('cigsPerDay');
-        const cigsPerPack = localStorage.getItem('cigsPerPack');
-        const pricePerPack = localStorage.getItem('pricePerPack');
+        const cigsPerDay = user.cigsPerDay;
+        const cigsPerPack = user.cigsPerPack;
+        const pricePerPack = user.pricePerPack;
 
         const savingsPerDay = (cigsPerDay / cigsPerPack) * pricePerPack;
         const remainingAmount = goal - current;

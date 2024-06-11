@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../context/userContext';
 
 export function useElapsedTime() {
+    const user = useContext(UserContext);
     const [timeElapsed, setTimeElapsed] = useState(() => {
-        const dateOfReturn = localStorage.getItem('dateOfReturn');
+        const dateOfReturn = user.dateOfReturn;
         if (dateOfReturn) {
             const startDate = new Date(dateOfReturn);
             const currentDate = new Date();
@@ -14,7 +16,7 @@ export function useElapsedTime() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            const dateOfReturn = localStorage.getItem('dateOfReturn');
+            const dateOfReturn = user.dateOfReturn;
             if (dateOfReturn) {
                 const startDate = new Date(dateOfReturn);
                 const currentDate = new Date();

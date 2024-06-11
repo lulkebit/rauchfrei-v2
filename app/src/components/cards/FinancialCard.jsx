@@ -1,17 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../../context/userContext';
 import Card from './Card';
 
 function FinancialCard() {
+    const user = useContext(UserContext);
     const [savings, setSavings] = useState(0);
     const [annualSavings, setAnnualSavings] = useState(0);
     const [monthlySavings, setMonthlySavings] = useState(0);
     const [dailySavings, setDailySavings] = useState(0);
 
     useEffect(() => {
-        const days = localStorage.getItem('days');
-        const cigsPerDay = localStorage.getItem('cigsPerDay');
-        const cigsPerPack = localStorage.getItem('cigsPerPack');
-        const pricePerPack = localStorage.getItem('pricePerPack');
+        const dateOfReturn = user.dateOfReturn;
+        const startDate = new Date(dateOfReturn);
+        const currentDate = new Date();
+        const elapsedMilliseconds = currentDate - startDate;
+        const days = Math.floor(elapsedMilliseconds / (1000 * 60 * 60 * 24));
+        const cigsPerDay = user.cigsPerDay;
+        const cigsPerPack = user.cigsPerPack;
+        const pricePerPack = user.pricePerPack;
 
         if (days && cigsPerDay && cigsPerPack && pricePerPack) {
             const totalCigsSmoked = days * cigsPerDay;

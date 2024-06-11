@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../../context/userContext';
 import Card from './Card';
 
 function SmokeFreeTimeCard() {
+    const user = useContext(UserContext);
     const [timeElapsed, setTimeElapsed] = useState(() => {
-        const dateOfReturn = localStorage.getItem('dateOfReturn');
+        const dateOfReturn = user.dateOfReturn;
         if (dateOfReturn) {
             const startDate = new Date(dateOfReturn);
             const currentDate = new Date();
@@ -15,16 +17,12 @@ function SmokeFreeTimeCard() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            const dateOfReturn = localStorage.getItem('dateOfReturn');
+            const dateOfReturn = user.dateOfReturn;
             if (dateOfReturn) {
                 const startDate = new Date(dateOfReturn);
                 const currentDate = new Date();
                 const elapsedMilliseconds = currentDate - startDate;
                 setTimeElapsed(elapsedMilliseconds);
-                const days = Math.floor(
-                    elapsedMilliseconds / (1000 * 60 * 60 * 24)
-                );
-                localStorage.setItem('days', days);
             }
         }, 1000);
 
