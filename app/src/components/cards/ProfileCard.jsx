@@ -1,10 +1,16 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
 
 export default function ProfileCard() {
     const [isProfileExpanded, setProfileExpanded] = useState(false);
+    const navigate = useNavigate();
     const user = useContext(UserContext);
+
+    const handleLogout = () => {
+        localStorage.clear();
+        navigate('/login');
+    };
 
     return (
         <div
@@ -31,6 +37,12 @@ export default function ProfileCard() {
                         >
                             {user.name}
                         </a>
+                        <a
+                            className='block px-4 py-2 text-sm text-gray-700'
+                            role='menuitem'
+                        >
+                            <b>DEBUG:</b>
+                        </a>
                         <Link
                             to='/signup'
                             className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
@@ -45,6 +57,33 @@ export default function ProfileCard() {
                         >
                             Log In
                         </Link>
+                        <a
+                            className='block px-4 py-2 text-sm text-gray-700'
+                            role='menuitem'
+                        >
+                            <b>FINAL:</b>
+                        </a>
+                        <Link
+                            to='/profile'
+                            className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                            role='menuitem'
+                        >
+                            Profil
+                        </Link>
+                        <Link
+                            to='/settings'
+                            className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                            role='menuitem'
+                        >
+                            Einstellungen
+                        </Link>
+                        <button
+                            onClick={handleLogout}
+                            className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                            role='menuitem'
+                        >
+                            Logout
+                        </button>
                     </div>
                 </div>
             )}
