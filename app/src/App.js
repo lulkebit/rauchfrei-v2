@@ -60,18 +60,10 @@ function App() {
                     <hr className='bg-gradient-to-b from-emerald-600 via-green-500 to-teal-400' />
                     <div className='timeline-end'>
                         <section id='section3' className='h-screen bg-gray-100'>
-                            <SavingGoals />
+                            {/* <SavingGoals /> */}
                         </section>
                     </div>
                     <hr className='bg-gradient-to-b from-teal-400 via-green-500 to-emerald-600' />
-                </li>
-                <li>
-                    <hr className='bg-gradient-to-b from-emerald-600 via-green-500 to-teal-400' />
-                    <div className='timeline-start'>
-                        <section id='section4' className='h-screen bg-gray-100'>
-                            <Settings />
-                        </section>
-                    </div>
                 </li>
             </ul>
         </div>
