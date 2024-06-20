@@ -154,9 +154,22 @@ const updateUser = async (req, res) => {
     }
 };
 
+const logoutUser = (req, res) => {
+    try {
+        res.clearCookie('token');
+        res.json({ message: 'User logged out' });
+    } catch (error) {
+        console.log('Error on user logout', error.message);
+        return res.json({
+            error: error.message,
+        });
+    }
+};
+
 module.exports = {
     registerUser,
     loginUser,
     getProfile,
     updateUser,
+    logoutUser,
 };

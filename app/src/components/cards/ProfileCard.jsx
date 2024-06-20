@@ -1,15 +1,29 @@
 import React, { useState, useContext } from 'react';
+import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
+import { toast } from 'react-hot-toast';
 
 export default function ProfileCard() {
     const [isProfileExpanded, setProfileExpanded] = useState(false);
     const navigate = useNavigate();
     const user = useContext(UserContext);
 
-    const handleLogout = () => {
-        localStorage.clear();
-        navigate('/login');
+    const handleLogout = async () => {
+        try {
+            const { data } = await axios.post('/logout');
+
+            if (data.error) {
+                return toast.error(data.error);
+            } else {
+                localStorage.removeItem('token');
+                toast.success(data.message);
+                navigate('/login');
+            }
+        } catch (error) {
+            console.log('Error on user logout', error.message);
+            toast.error(error.message);
+        }
     };
 
     return (
