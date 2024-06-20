@@ -94,6 +94,7 @@ const loginUser = async (req, res) => {
                     res.cookie('token', token).json(user);
                 }
             );
+            console.log('User logged in:', user);
         } else {
             return res.json({
                 error: 'Invalid Password',
@@ -124,7 +125,8 @@ const getProfile = (req, res) => {
 
 const updateUser = async (req, res) => {
     try {
-        const { days, cigsPerDay, cigsPerPack, pricePerPack } = req.body;
+        const { cigsPerDay, cigsPerPack, pricePerPack, dateOfReturn } =
+            req.body;
         const { token } = req.cookies;
         if (token) {
             jwt.verify(token, process.env.JWT_SECRET, {}, async (err, user) => {
