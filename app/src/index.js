@@ -16,6 +16,7 @@ import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 import { UserContextProvider } from './context/userContext';
 import Debug from './pages/auth/debug';
+import PrivateRoute from './components/PrivateRoute';
 
 axios.defaults.baseURL = 'http://localhost:8000';
 axios.defaults.withCredentials = true;
@@ -26,7 +27,14 @@ root.render(
         <Toaster position='bottom-right' toastDuration={{ duration: 2000 }} />
         <Router>
             <Routes>
-                <Route path='/dashboard' element={<App />} />
+                <Route
+                    path='/dashboard'
+                    element={
+                        <PrivateRoute>
+                            <App />
+                        </PrivateRoute>
+                    }
+                />
                 <Route path='/signup' element={<Signup />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/debug' element={<Debug />} />
