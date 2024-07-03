@@ -27,14 +27,7 @@ root.render(
         <Toaster position='bottom-right' toastDuration={{ duration: 2000 }} />
         <Router>
             <Routes>
-                <Route
-                    path='/dashboard'
-                    element={
-                        <PrivateRoute>
-                            <App />
-                        </PrivateRoute>
-                    }
-                />
+                <Route path='/dashboard' element={<App />} />
                 <Route path='/signup' element={<Signup />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/debug' element={<Debug />} />
