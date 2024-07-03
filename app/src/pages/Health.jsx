@@ -7,6 +7,7 @@ import 'daisyui/dist/full.css';
 
 import Card from '../components/cards/Card';
 import ProgressBarTime from '../components/bars/ProgressBarTime';
+import CustomButton from '../components/CustomButton';
 
 function Health() {
     const { user } = useContext(UserContext);
@@ -181,7 +182,7 @@ function Health() {
             <div className='mb-4'></div>
             <Drawer.Root shouldScaleBackground>
                 <Drawer.Trigger asChild>
-                    <button>Mehr anzeigen</button>
+                    <CustomButton>Mehr anzeigen</CustomButton>
                 </Drawer.Trigger>
                 <Drawer.Portal>
                     <Drawer.Overlay className='fixed inset-0 bg-black/40' />

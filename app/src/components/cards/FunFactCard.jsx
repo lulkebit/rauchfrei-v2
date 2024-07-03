@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Card from './Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedo } from '@fortawesome/free-solid-svg-icons';
+import CustomButton from '../CustomButton';
 
 const messages = [
     'Keine lästigen Zigarettenpausen mehr: Du kannst jetzt deine Zeit sinnvoller nutzen, zum Beispiel für einen kurzen Powernap!',
@@ -47,14 +48,11 @@ function FunFactCard() {
     };
 
     return (
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center space-y-4'>
             <Card title='Funfact' content={currentMessage} />
-            <button
-                onClick={rerollMessage}
-                className='bg-teal-400 hover:bg-teal-500 text-white font-bold py-1 px-2 rounded mt-2 inline-flex items-center text-xs'
-            >
+            <CustomButton onClick={rerollMessage}>
                 <FontAwesomeIcon icon={faRedo} size='xs' />
-            </button>
+            </CustomButton>
         </div>
     );
 }
