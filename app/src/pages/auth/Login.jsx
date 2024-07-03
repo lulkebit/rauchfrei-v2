@@ -28,6 +28,7 @@ export default function Signup() {
                 setData({});
                 toast.success('User logged in successfully');
                 navigate('/');
+                window.location.reload();
             }
         } catch (error) {
             console.log('Error on loginUser', error);
