@@ -24,7 +24,7 @@ function convertMinutesToTimeFormat(minutes) {
 }
 
 const ProgressBarMoney = ({ goal, current }) => {
-    const user = useContext(UserContext);
+    const { user } = useContext(UserContext);
     const [timeLeft, setTimeLeft] = useState(0);
 
     useEffect(() => {

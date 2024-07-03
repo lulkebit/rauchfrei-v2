@@ -3,11 +3,13 @@ import { UserContext } from '../../context/userContext';
 import Card from './Card';
 
 function ConsumeCard() {
-    const user = useContext(UserContext);
+    const { user } = useContext(UserContext);
     const [cigsResisted, setCigsResisted] = useState(0);
     const [cigsResistedPerYear, setCigsResistedPerYear] = useState(0);
 
     useEffect(() => {
+        if (!user) return;
+
         const dateOfReturn = user.dateOfReturn;
         const startDate = new Date(dateOfReturn);
         const currentDate = new Date();
@@ -24,7 +26,7 @@ function ConsumeCard() {
             setCigsResisted(totalCigsResistedTillNow);
             setCigsResistedPerYear(totalCigsResistedPerYear);
         }
-    }, []);
+    }, [user]);
 
     return (
         <Card

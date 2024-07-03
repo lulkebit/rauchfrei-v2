@@ -7,7 +7,7 @@ import { toast } from 'react-hot-toast';
 export default function ProfileCard() {
     const [isProfileExpanded, setProfileExpanded] = useState(false);
     const navigate = useNavigate();
-    const user = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     const handleLogout = async () => {
         try {

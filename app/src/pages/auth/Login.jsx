@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../context/userContext';
 
 export default function Signup() {
     const navigate = useNavigate();
@@ -9,6 +10,7 @@ export default function Signup() {
         email: '',
         password: '',
     });
+    const { setUser } = useContext(UserContext);
 
     const loginUser = async (event) => {
         event.preventDefault();
@@ -22,6 +24,7 @@ export default function Signup() {
             if (data.error) {
                 return toast.error(data.error);
             } else {
+                setUser(data.user);
                 setData({});
                 toast.success('User logged in successfully');
                 navigate('/');

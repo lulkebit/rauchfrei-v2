@@ -3,13 +3,15 @@ import { UserContext } from '../../context/userContext';
 import Card from './Card';
 
 function FinancialCard() {
-    const user = useContext(UserContext);
+    const { user } = useContext(UserContext);
     const [savings, setSavings] = useState(0);
     const [annualSavings, setAnnualSavings] = useState(0);
     const [monthlySavings, setMonthlySavings] = useState(0);
     const [dailySavings, setDailySavings] = useState(0);
 
     useEffect(() => {
+        if (!user) return;
+
         const dateOfReturn = user.dateOfReturn;
         const startDate = new Date(dateOfReturn);
         const currentDate = new Date();
@@ -41,7 +43,7 @@ function FinancialCard() {
             setMonthlySavings(monthlySavings.toFixed(2));
             setDailySavings(dailySavings.toFixed(2));
         }
-    }, []);
+    }, [user]);
 
     return (
         <Card

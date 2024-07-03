@@ -2,11 +2,15 @@ import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../context/userContext';
 
 const ProgressBarTime = ({ minutes }) => {
-    const user = useContext(UserContext);
+    const { user } = useContext(UserContext);
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
         const updateProgress = () => {
+            if (!user) {
+                setProgress(0);
+                return;
+            }
             const dateOfReturn = user.dateOfReturn;
             if (dateOfReturn) {
                 const currentDate = new Date();
@@ -28,7 +32,7 @@ const ProgressBarTime = ({ minutes }) => {
         const interval = setInterval(updateProgress, 1000); // Update every second
 
         return () => clearInterval(interval);
-    }, [minutes]);
+    }, [minutes, user]);
 
     return (
         <progress

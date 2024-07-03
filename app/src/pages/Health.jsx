@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../context/userContext';
 import { Drawer } from 'vaul';
 
@@ -9,7 +9,8 @@ import Card from '../components/cards/Card';
 import ProgressBarTime from '../components/bars/ProgressBarTime';
 
 function Health() {
-    const user = useContext(UserContext);
+    const { user } = useContext(UserContext);
+    const [milestonesWithProgress, setMilestonesWithProgress] = useState([]);
 
     const milestones = [
         {
@@ -85,46 +86,51 @@ function Health() {
         },
     ];
 
-    const dateOfReturn = user.dateOfReturn;
-    const currentDate = Date.now();
-    const milestonesWithProgress = milestones.map((milestone) => {
-        if (dateOfReturn) {
-            const returnDate = new Date(dateOfReturn);
-            const elapsedTime = currentDate - returnDate;
-            const totalDuration = milestone.minutes * 60 * 1000; // Convert minutes to milliseconds
+    useEffect(() => {
+        const currentDate = Date.now();
+        const dateOfReturn = user?.dateOfReturn;
+        const updatedMilestones = milestones.map((milestone) => {
+            if (dateOfReturn) {
+                const returnDate = new Date(dateOfReturn);
+                const elapsedTime = currentDate - returnDate;
+                const totalDuration = milestone.minutes * 60 * 1000; // Convert minutes to milliseconds
 
-            const calculatedProgress = Math.min(
-                (elapsedTime / totalDuration) * 100,
-                100
-            );
+                const calculatedProgress = Math.min(
+                    (elapsedTime / totalDuration) * 100,
+                    100
+                );
 
-            return {
-                ...milestone,
-                progress: calculatedProgress,
-            };
-        } else {
-            return {
-                ...milestone,
-                progress: 0,
-            };
-        }
-    });
+                return {
+                    ...milestone,
+                    progress: calculatedProgress,
+                };
+            } else {
+                return {
+                    ...milestone,
+                    progress: 0,
+                };
+            }
+        });
 
-    const nextTwoMilestones = milestonesWithProgress
-        .filter((milestone) => {
-            const milestoneTime = currentDate + milestone.minutes * 60 * 1000;
-            return (
-                milestoneTime > currentDate &&
-                milestoneTime <
-                    currentDate +
-                        (100 - milestone.progress) *
-                            milestone.minutes *
-                            60 *
-                            1000
-            );
-        })
-        .sort((a, b) => a.minutes - b.minutes)
-        .slice(0, 2);
+        const nextTwoMilestones = updatedMilestones
+            .filter((milestone) => {
+                const milestoneTime =
+                    currentDate + milestone.minutes * 60 * 1000;
+                return (
+                    milestoneTime > currentDate &&
+                    milestoneTime <
+                        currentDate +
+                            (100 - milestone.progress) *
+                                milestone.minutes *
+                                60 *
+                                1000
+                );
+            })
+            .sort((a, b) => a.minutes - b.minutes)
+            .slice(0, 2);
+
+        setMilestonesWithProgress(nextTwoMilestones);
+    }, [user?.dateOfReturn]);
 
     function convertMinutesToTimeFormat(minutes) {
         const timeUnits = [
@@ -156,7 +162,7 @@ function Health() {
         <div className='min-h-screen flex flex-col items-center justify-center mx-8'>
             <h1 className='text-4xl font-bold mb-8'>Nächster Meilenstein:</h1>
             <div className='grid grid-rows-1 gap-6 max-w-4xl'>
-                {nextTwoMilestones.map((milestone, index) => (
+                {milestonesWithProgress.map((milestone, index) => (
                     <Card
                         key={index}
                         title={milestone.title}

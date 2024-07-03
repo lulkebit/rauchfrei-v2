@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import 'tailwindcss/tailwind.css';
 import 'daisyui/dist/full.css';
 import FormInput from '../components/inputs/FormInput';
 import DateInput from '../components/inputs/DateInput';
 
 function Settings() {
+    const [formData, setFormData] = useState({
+        cigsPerDay: '',
+        cigsPerPack: '',
+        pricePerPack: '',
+        dateOfReturn: '',
+    });
+
+    const handleInputChange = (event) => {
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value,
+        });
+    };
+
+    const handleSave = async () => {
+        try {
+            const response = await axios.post('/updateUser', formData);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error updating user', error);
+        }
+    };
+
     return (
         <div className='min-h-screen flex flex-col justify-center items-center mx-8'>
             <div
@@ -22,6 +46,8 @@ function Settings() {
                             placeholder='15'
                             type='number'
                             name='cigsPerDay'
+                            value={formData.cigsPerDay}
+                            onChange={handleInputChange}
                         />
 
                         <FormInput
@@ -29,6 +55,8 @@ function Settings() {
                             placeholder='80'
                             type='number'
                             name='cigsPerPack'
+                            value={formData.cigsPerPack}
+                            onChange={handleInputChange}
                         />
 
                         <FormInput
@@ -36,12 +64,17 @@ function Settings() {
                             placeholder='7'
                             type='number'
                             name='pricePerPack'
+                            value={formData.pricePerPack}
+                            onChange={handleInputChange}
                         />
 
                         <DateInput
                             label='Zeitpunkt des Aufhörens'
                             name='dateOfReturn'
+                            value={formData.dateOfReturn}
+                            onChange={handleInputChange}
                         />
+                        <button onClick={handleSave}>Save</button>
                     </div>
                 </div>
             </div>
