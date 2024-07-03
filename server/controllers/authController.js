@@ -94,7 +94,7 @@ const loginUser = async (req, res) => {
                     res.cookie('token', token).json(user);
                 }
             );
-            console.log('User logged in:', user);
+            // console.log('User logged in:', user);
         } else {
             return res.json({
                 error: 'Invalid Password',
