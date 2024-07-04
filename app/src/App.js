@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { UserContext } from './context/userContext';
 import Navbar from './components/Navbar';
-import Dashboard from './pages/Dashboard';
+import FunFactCard from './components/cards/FunFactCard';
+import SmokeFreeTimeCard from './components/cards/SmokeFreeTimeCard';
+import FinancialCard from './components/cards/FinancialCard';
+import ConsumeCard from './components/cards/ConsumeCard';
 import Health from './pages/Health';
-import Settings from './pages/Settings';
 import SavingGoals from './pages/SavingGoals';
 
 function App() {
@@ -22,34 +24,24 @@ function App() {
                 <>
                     <Navbar handleNavLinkClick={handleNavLinkClick} />
                     <section id='section1' className='h-screen bg-gray-100'>
-                        <Dashboard />
+                        <div className='min-h-screen flex flex-col items-center justify-center mx-8'>
+                            <h1 className='text-4xl font-bold mb-8'>
+                                Hallo {user.name}!
+                            </h1>
+                            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
+                                <FunFactCard />
+                                <SmokeFreeTimeCard />
+                                <FinancialCard />
+                                <ConsumeCard />
+                            </div>
+                        </div>
                     </section>
-                    <ul className='timeline timeline-vertical bg-gray-100'>
-                        <li>
-                            <hr className='bg-gradient-to-b from-emerald-600 via-green-500 to-teal-400' />
-                            <div className='timeline-start'>
-                                <section
-                                    id='section2'
-                                    className='h-screen bg-gray-100'
-                                >
-                                    <Health />
-                                </section>
-                            </div>
-                            <hr className='bg-gradient-to-b from-teal-400 via-green-500 to-emerald-600' />
-                        </li>
-                        <li>
-                            <hr className='bg-gradient-to-b from-emerald-600 via-green-500 to-teal-400' />
-                            <div className='timeline-end'>
-                                <section
-                                    id='section3'
-                                    className='h-screen bg-gray-100'
-                                >
-                                    {/* <SavingGoals /> */}
-                                </section>
-                            </div>
-                            <hr className='bg-gradient-to-b from-teal-400 via-green-500 to-emerald-600' />
-                        </li>
-                    </ul>
+                    <section id='section2' className='h-screen bg-gray-200'>
+                        <Health />
+                    </section>
+                    <section id='section3' className='h-screen bg-gray-300'>
+                        <SavingGoals />
+                    </section>
                 </>
             ) : (
                 <div className='flex justify-center items-center h-screen bg-gray-100'>
