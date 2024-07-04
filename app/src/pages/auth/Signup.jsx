@@ -241,8 +241,17 @@ export default function Signup() {
                                 }}
                             />
                         </div>
-                        <div className='flex items-center justify-center mt-8'>
-                            <CustomButton>Weiter</CustomButton>
+                        <div className='flex flex-col items-center justify-center mt-8'>
+                            <CustomButton>Weiter</CustomButton>´
+                            <p className='text-sm'>
+                                Du hast bereits ein Account?
+                            </p>
+                            <button
+                                onClick={() => navigate('/login')}
+                                className='text-sm text-blue-500 hover:underline'
+                            >
+                                Anmelden
+                            </button>
                         </div>
                     </form>
                 )}
