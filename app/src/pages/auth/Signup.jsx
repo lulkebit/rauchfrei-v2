@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import CustomButton from '../../components/CustomButton';
 
 export default function Signup() {
     const navigate = useNavigate();
@@ -72,22 +73,24 @@ export default function Signup() {
     };
 
     return (
-        <div className='min-h-screen bg-gray-100 flex items-center justify-center'>
-            <div
-                className='card flex-shrink-0 w-full max-w-sm bg-white'
-                style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)' }}
-            >
+        <div className='svgBackground min-h-screen flex items-center justify-center bg-gray-100'>
+            <div className='bg-white p-8 rounded-lg shadow-md w-full max-w-md'>
+                <h2 className='text-2xl font-semibold text-center text-gray-700 mb-8'>
+                    Willkommen!
+                </h2>
                 {showSettings ? (
-                    <form onSubmit={registerUser} className='card-body'>
-                        <div className='form-control'>
-                            <label className='label'>
-                                <span className='label-text text-black'>
-                                    Cigarettes per day
-                                </span>
+                    <form className='mb-4' onSubmit={registerUser}>
+                        <div className='mb-4'>
+                            <label
+                                className='block text-gray-700 text-sm font-bold mb-2'
+                                htmlFor='cigsPerDay'
+                            >
+                                Zigaretten am Tag
                             </label>
                             <input
+                                className='input input-bordered w-full'
+                                id='cigsPerDay'
                                 type='number'
-                                placeholder='Enter cigarettes per day'
                                 value={data.cigsPerDay}
                                 onChange={(event) => {
                                     setData({
@@ -95,18 +98,22 @@ export default function Signup() {
                                         cigsPerDay: event.target.value,
                                     });
                                 }}
-                                className='input input-bordered'
+                                placeholder='Wie viele Zigaretten rauchst du am Tag?'
                             />
                         </div>
-                        <div className='form-control'>
-                            <label className='label'>
-                                <span className='label-text text-black'>
-                                    Cigarettes per pack
-                                </span>
+
+                        <div className='mb-6'>
+                            <label
+                                className='block text-gray-700 text-sm font-bold mb-2'
+                                htmlFor='cigsPerPack'
+                            >
+                                Zigaretten pro Schachtel
                             </label>
                             <input
+                                className='input input-bordered w-full'
+                                id='cigsPerPack'
                                 type='number'
-                                placeholder='Enter cigarettes per pack'
+                                placeholder='Wie viele Zigaretten sind in einer Schachtel?'
                                 value={data.cigsPerPack}
                                 onChange={(event) => {
                                     setData({
@@ -114,18 +121,21 @@ export default function Signup() {
                                         cigsPerPack: event.target.value,
                                     });
                                 }}
-                                className='input input-bordered'
                             />
                         </div>
-                        <div className='form-control'>
-                            <label className='label'>
-                                <span className='label-text text-black'>
-                                    Price per pack
-                                </span>
+
+                        <div className='mb-6'>
+                            <label
+                                className='block text-gray-700 text-sm font-bold mb-2'
+                                htmlFor='pricePerPack'
+                            >
+                                Preis pro Schachtel
                             </label>
                             <input
+                                className='input input-bordered w-full'
+                                id='pricePerPack'
                                 type='number'
-                                placeholder='Enter price per pack'
+                                placeholder='Wie viel kostet eine Schachtel?'
                                 value={data.pricePerPack}
                                 onChange={(event) => {
                                     setData({
@@ -133,18 +143,21 @@ export default function Signup() {
                                         pricePerPack: event.target.value,
                                     });
                                 }}
-                                className='input input-bordered'
                             />
                         </div>
-                        <div className='form-control'>
-                            <label className='label'>
-                                <span className='label-text text-black'>
-                                    Date of return
-                                </span>
+
+                        <div className='mb-6'>
+                            <label
+                                className='block text-gray-700 text-sm font-bold mb-2'
+                                htmlFor='dateOfReturn'
+                            >
+                                Tag des Aufhörens
                             </label>
                             <input
+                                className='input input-bordered w-full'
+                                id='dateOfReturn'
                                 type='date'
-                                placeholder='Enter date of return'
+                                placeholder='Wann hast du aufgehört?'
                                 value={data.dateOfReturn}
                                 onChange={(event) => {
                                     setData({
@@ -152,26 +165,25 @@ export default function Signup() {
                                         dateOfReturn: event.target.value,
                                     });
                                 }}
-                                className='input input-bordered'
                             />
                         </div>
-                        <div className='form-control mt-6'>
-                            <button className='w-full text-center bg-teal-400 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded'>
-                                Signup
-                            </button>
+                        <div className='flex items-center justify-center mt-8'>
+                            <CustomButton>Registrieren</CustomButton>
                         </div>
                     </form>
                 ) : (
-                    <form onSubmit={submitAccData} className='card-body'>
-                        <div className='form-control'>
-                            <label className='label'>
-                                <span className='label-text text-black'>
-                                    Name
-                                </span>
+                    <form className='mb-4' onSubmit={submitAccData}>
+                        <div className='mb-4'>
+                            <label
+                                className='block text-gray-700 text-sm font-bold mb-2'
+                                htmlFor='username'
+                            >
+                                Name
                             </label>
                             <input
+                                className='input input-bordered w-full'
+                                id='username'
                                 type='text'
-                                placeholder='Enter your name'
                                 value={data.name}
                                 onChange={(event) => {
                                     setData({
@@ -179,18 +191,20 @@ export default function Signup() {
                                         name: event.target.value,
                                     });
                                 }}
-                                className='input input-bordered'
+                                placeholder='Gib deinen Namen ein'
                             />
                         </div>
-                        <div className='form-control'>
-                            <label className='label'>
-                                <span className='label-text text-black'>
-                                    Email
-                                </span>
+                        <div className='mb-4'>
+                            <label
+                                className='block text-gray-700 text-sm font-bold mb-2'
+                                htmlFor='email'
+                            >
+                                Email
                             </label>
                             <input
+                                className='input input-bordered w-full'
+                                id='email'
                                 type='email'
-                                placeholder='Enter your email'
                                 value={data.email}
                                 onChange={(event) => {
                                     setData({
@@ -198,18 +212,22 @@ export default function Signup() {
                                         email: event.target.value,
                                     });
                                 }}
-                                className='input input-bordered'
+                                placeholder='Gib deine E-Mail-Adresse ein'
                             />
                         </div>
-                        <div className='form-control'>
-                            <label className='label'>
-                                <span className='label-text text-black'>
-                                    Password
-                                </span>
+
+                        <div className='mb-6'>
+                            <label
+                                className='block text-gray-700 text-sm font-bold mb-2'
+                                htmlFor='password'
+                            >
+                                Passwort
                             </label>
                             <input
+                                className='input input-bordered w-full'
+                                id='password'
                                 type='password'
-                                placeholder='Enter your password'
+                                placeholder='Gib dein Passwort ein'
                                 value={data.password}
                                 onChange={(event) => {
                                     setData({
@@ -217,13 +235,10 @@ export default function Signup() {
                                         password: event.target.value,
                                     });
                                 }}
-                                className='input input-bordered'
                             />
                         </div>
-                        <div className='form-control mt-6'>
-                            <button className='w-full text-center bg-teal-400 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded'>
-                                Proceed
-                            </button>
+                        <div className='flex items-center justify-center mt-8'>
+                            <CustomButton>Weiter</CustomButton>
                         </div>
                     </form>
                 )}
