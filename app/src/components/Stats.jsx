@@ -4,8 +4,8 @@ const Stat = ({ title, value, description, icon }) => {
     return (
         <div className='bg-white rounded-lg shadow-md p-6 flex flex-col items-center'>
             {icon && <div className='text-3xl mb-2'>{icon}</div>}
-            <div className='text-gray-700 text-sm'>{title}</div>
-            <div className='text-3xl font-bold my-1'>{value}</div>
+            <div className='text-gray-700 text-xl font-bold'>{title}</div>
+            <div className='text-3xl font-bold my-3'>{value}</div>
             {description && (
                 <div className=' text-gray-600 text-xs'>{description}</div>
             )}
