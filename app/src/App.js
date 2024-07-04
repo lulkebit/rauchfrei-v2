@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { UserContext } from './context/userContext';
 import Navbar from './components/Navbar';
-import FunFactCard from './components/cards/FunFactCard';
 import SmokeFreeTimeCard from './components/cards/SmokeFreeTimeCard';
 import FinancialCard from './components/cards/FinancialCard';
 import ConsumeCard from './components/cards/ConsumeCard';
 import Health from './pages/Health';
 import SavingGoals from './pages/SavingGoals';
+import { Stat, StatGroup } from './components/Stats';
+import { FaClock, FaMoneyBill, FaSmokingBan } from 'react-icons/fa';
 
 function App() {
     const { user } = useContext(UserContext);
@@ -28,11 +29,33 @@ function App() {
                             <h1 className='text-4xl font-bold mb-8'>
                                 Hallo {user.name}!
                             </h1>
-                            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
-                                <FunFactCard />
-                                <SmokeFreeTimeCard />
-                                <FinancialCard />
-                                <ConsumeCard />
+                            <div className='container mx-auto p-4'>
+                                <StatGroup>
+                                    <Stat
+                                        title='Rauchfreie Zeit'
+                                        value={<SmokeFreeTimeCard />}
+                                        description='Seit TT.MM.JJJJ'
+                                        icon={
+                                            <FaClock className='text-blue-500' />
+                                        }
+                                    />
+                                    <Stat
+                                        title='Ersparnis'
+                                        value={<FinancialCard />}
+                                        description='↗︎ 8,7% mehr als der Durchschnitt'
+                                        icon={
+                                            <FaMoneyBill className='text-green-500' />
+                                        }
+                                    />
+                                    <Stat
+                                        title='Konsum'
+                                        value={<ConsumeCard />}
+                                        description='↘︎ 10% weniger als der Durchschnitt'
+                                        icon={
+                                            <FaSmokingBan className='text-red-500' />
+                                        }
+                                    />
+                                </StatGroup>
                             </div>
                         </div>
                     </section>
