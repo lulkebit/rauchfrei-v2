@@ -3,6 +3,7 @@ import { Drawer } from 'vaul';
 import { v4 as uuidv4 } from 'uuid';
 import SavingsInput from '../components/inputs/SavingsInputs';
 import ProgressBarMoney from '../components/bars/ProgressBarMoney';
+import CustomButton from '../components/CustomButton';
 
 const SavingGoals = () => {
     const [sparziel, setSparziel] = useState('');
@@ -107,15 +108,15 @@ const SavingGoals = () => {
                             onChange={handlePriceChange}
                             onBlur={handlePriceBlur}
                         />
-                        <button
-                            onClick={handleClick}
-                            className='bg-teal-400 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded mb-4 w-auto inline-block self-start'
-                        >
+                        <CustomButton onClick={handleClick}>
                             Hinzufügen
-                        </button>
+                        </CustomButton>
                     </div>
                     {cardsToDisplay.map((card, index) => (
-                        <div key={index} className='card shadow-lg relative'>
+                        <div
+                            key={index}
+                            className='card shadow-lg relative mb-4'
+                        >
                             <div className='card-body'>
                                 <div className='flex justify-between items-center'>
                                     <h2 className='card-title'>{card.title}</h2>
@@ -140,20 +141,14 @@ const SavingGoals = () => {
                             </div>
                         </div>
                     ))}
-                    <div className='mb-4'></div>
-                    <button
-                        className={`
-            text-white font-bold py-2 px-4 rounded mx-auto block
-            ${
-                cards.length === 0
-                    ? 'bg-zinc-300'
-                    : 'bg-teal-400 hover:bg-teal-500'
-            }`}
-                        onClick={setOpen}
-                        disabled={cards.length === 0}
-                    >
-                        Mehr anzeigen
-                    </button>
+                    <div className='flex justify-center mt-5'>
+                        <CustomButton
+                            onClick={setOpen}
+                            state={cards.length === 0}
+                        >
+                            Mehr anzeigen
+                        </CustomButton>
+                    </div>
                     <Drawer.Root
                         open={open}
                         onOpenChange={setOpen}
