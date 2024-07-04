@@ -45,7 +45,9 @@ const ProgressBarMoney = ({ goal, current }) => {
     return (
         <>
             <progress
-                className='progress progress-success w-56'
+                className={`progress ${
+                    percentage < 100 ? 'progress-success' : 'progress-warning'
+                } w-56`}
                 value={percentage}
                 max='100'
             ></progress>

@@ -61,10 +61,12 @@ const ProgressBarTime = ({ minutes }) => {
     return (
         <>
             <progress
-                className='progress progress-success w-56'
+                className={`progress ${
+                    progress < 100 ? 'progress-success' : 'progress-warning'
+                } w-56`}
                 value={progress}
                 max='100'
-            />
+            ></progress>
             {progress < 100 ? (
                 <p>{`Wird erreicht in ${timeLeftFormatted}`}</p>
             ) : (
