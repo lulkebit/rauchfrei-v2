@@ -50,29 +50,23 @@ const Navbar = ({ handleNavLinkClick }) => {
                             className='cursor-pointer px-2'
                             onClick={() => handleNavLinkClick('section1')}
                         >
-                            Placeholder 1
+                            Home
                         </li>
                         <li
                             className='cursor-pointer px-2'
                             onClick={() => handleNavLinkClick('section2')}
                         >
-                            Placeholder 2
+                            Gesundheit
                         </li>
                         <li
                             className='cursor-pointer px-2'
                             onClick={() => handleNavLinkClick('section3')}
                         >
-                            Placeholder 3
-                        </li>
-                        <li
-                            className='cursor-pointer px-2'
-                            onClick={() => handleNavLinkClick('section4')}
-                        >
-                            Placeholder 4
+                            Sparziele
                         </li>
                     </Scrollspy>
-                    <ProfileCard />
                 </ul>
+                <ProfileCard />
             </div>
         </nav>
     );
