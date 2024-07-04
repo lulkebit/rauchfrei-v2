@@ -48,7 +48,7 @@ export default function ProfileCard() {
             <img
                 src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'
                 alt='User avatar'
-                className='w-8 h-8 rounded-full'
+                className='w-8 h-8 rounded-full cursor-pointer'
                 onClick={() => setProfileExpanded(!isProfileExpanded)}
             />
             {isProfileExpanded && (
