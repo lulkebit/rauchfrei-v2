@@ -14,6 +14,8 @@
 
 ![Health](screenshots/health2.png)
 
+![Health](screenshots/health3.png)
+
 ### Sparen
 
 _Bild folgt_
