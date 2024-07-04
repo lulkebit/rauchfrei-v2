@@ -16,4 +16,12 @@
 
 ### Sparen
 
-![Savings](screenshots/savings.png)
+_Bild folgt_
+
+### Login
+
+![Login](screenshots/login.png)
+
+### Register
+
+![Registr](screenshots/register.png)
