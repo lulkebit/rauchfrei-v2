@@ -3,8 +3,9 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
+import CustomButton from '../../components/CustomButton';
 
-export default function Signup() {
+export default function Login() {
     const navigate = useNavigate();
     const [data, setData] = useState({
         email: '',
@@ -28,7 +29,7 @@ export default function Signup() {
                 setData({});
                 toast.success('User logged in successfully');
                 navigate('/');
-                window.location.reload();
+                window.location.reload(); // TODO find better solution than reloading the page
             }
         } catch (error) {
             console.log('Error on loginUser', error);
@@ -37,35 +38,47 @@ export default function Signup() {
     };
 
     return (
-        <div className='min-h-screen bg-gray-100 flex items-center justify-center'>
-            <div
-                className='card flex-shrink-0 w-full max-w-sm bg-white'
-                style={{ boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)' }}
-            >
-                <form onSubmit={loginUser} className='card-body'>
-                    <div className='form-control'>
-                        <label className='label'>
-                            <span className='label-text text-black'>Email</span>
+        <div className='svgBackground min-h-screen flex items-center justify-center bg-gray-100'>
+            <div className='bg-white p-8 rounded-lg shadow-md w-full max-w-md'>
+                <h2 className='text-2xl font-semibold text-center text-gray-700 mb-8'>
+                    Willkommen zurück!
+                </h2>
+
+                <form className='mb-4' onSubmit={loginUser}>
+                    <div className='mb-4'>
+                        <label
+                            className='block text-gray-700 text-sm font-bold mb-2'
+                            htmlFor='username'
+                        >
+                            Email
                         </label>
                         <input
-                            type='email'
-                            placeholder='Enter your email'
+                            className='input input-bordered w-full'
+                            id='username'
+                            type='text'
                             value={data.email}
                             onChange={(event) => {
-                                setData({ ...data, email: event.target.value });
+                                setData({
+                                    ...data,
+                                    email: event.target.value,
+                                });
                             }}
-                            className='input input-bordered'
+                            placeholder='Gib deine E-Mail-Adresse ein'
                         />
                     </div>
-                    <div className='form-control'>
-                        <label className='label'>
-                            <span className='label-text text-black'>
-                                Password
-                            </span>
+
+                    <div className='mb-6'>
+                        <label
+                            className='block text-gray-700 text-sm font-bold mb-2'
+                            htmlFor='password'
+                        >
+                            Passwort
                         </label>
                         <input
+                            className='input input-bordered w-full'
+                            id='password'
                             type='password'
-                            placeholder='Enter your password'
+                            placeholder='Gib dein Passwort ein'
                             value={data.password}
                             onChange={(event) => {
                                 setData({
@@ -73,15 +86,27 @@ export default function Signup() {
                                     password: event.target.value,
                                 });
                             }}
-                            className='input input-bordered'
                         />
                     </div>
-                    <div className='form-control mt-6'>
-                        <button className='w-full text-center bg-teal-400 hover:bg-teal-500 text-white font-bold py-2 px-4 rounded'>
-                            Login
-                        </button>
+                    <div className='flex items-center justify-center mt-8'>
+                        <CustomButton>Log in</CustomButton>
                     </div>
                 </form>
+                <div className='mt-4 flex flex-col items-center justify-center'>
+                    <button
+                        onClick={() => navigate('/login')} // TODO add forgot password page
+                        className='text-sm text-blue-500 hover:underline mb-3'
+                    >
+                        Passwort vergessen?
+                    </button>
+                    <p className='text-sm'>Don't have an account?</p>
+                    <button
+                        onClick={() => navigate('/signup')}
+                        className='text-sm text-blue-500 hover:underline'
+                    >
+                        Sign up
+                    </button>
+                </div>
             </div>
         </div>
     );
