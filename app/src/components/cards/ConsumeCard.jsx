@@ -29,18 +29,11 @@ function ConsumeCard() {
     }, [user]);
 
     return (
-        <Card
-            title='Konsum'
-            content={
-                <>
-                    Du hast bereits <b>{cigsResisted} Zigaretten</b>{' '}
-                    widerstanden.
-                    <br />
-                    Auf ein Jahr gerechnet sind das{' '}
-                    <b>{cigsResistedPerYear} Stück</b>
-                </>
-            }
-        />
+        <p className='text-sm font-normal text-gray-700 mt-1 text-center w-full'>
+            Du hast bereits <b>{cigsResisted} Zigaretten</b> widerstanden.
+            <br />
+            Auf ein Jahr gerechnet sind das <b>{cigsResistedPerYear} Stück</b>
+        </p>
     );
 }
 

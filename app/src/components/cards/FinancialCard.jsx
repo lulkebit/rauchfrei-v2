@@ -46,18 +46,14 @@ function FinancialCard() {
     }, [user]);
 
     return (
-        <Card
-            title='Finanzen'
-            content={
-                <>
-                    Du hast bereits <b>{savings}€</b> gespart!
-                    <br />
-                    Dein jährliches Ersparnis beläuft sich auf{' '}
-                    <b>{annualSavings}€</b>. Das sind <b>{monthlySavings}€</b>{' '}
-                    im Monat bzw. <b>{dailySavings}€</b> am Tag!
-                </>
-            }
-        />
+        <p className='text-sm font-normal text-gray-700 mt-1 text-center w-full'>
+            Du hast bereits <b>{savings}€</b> gespart!
+            <br />
+            Dein jährliches Ersparnis beläuft sich auf <b>{annualSavings}€</b>.
+            <br />
+            Das sind <b>{monthlySavings}€</b> im Monat bzw.
+            <b>{dailySavings}€</b> am Tag!
+        </p>
     );
 }
 
