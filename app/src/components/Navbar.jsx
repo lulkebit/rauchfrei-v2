@@ -15,7 +15,7 @@ const Navbar = ({ handleNavLinkClick }) => {
         seconds %= 3600;
         const minutes = Math.floor(seconds / 60);
         const remainingSeconds = seconds % 60;
-        return `${days} Tage ${hours} Stunden ${minutes} Minuten ${remainingSeconds} Sekunden`;
+        return `${days} : ${hours} : ${minutes} : ${remainingSeconds}`;
     };
 
     return (
@@ -36,7 +36,7 @@ const Navbar = ({ handleNavLinkClick }) => {
                     <b>Rauchfrei</b>
                 </li>
             </div>
-            <div className='text-xs'>
+            <div className='text-xs flex items-center justify-center text-nowrap'>
                 <b>{formatTime(timeElapsed)}</b>
             </div>
             <div className='navbar-end hidden lg:flex'>
