@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
@@ -8,6 +8,23 @@ export default function ProfileCard() {
     const [isProfileExpanded, setProfileExpanded] = useState(false);
     const navigate = useNavigate();
     const { user } = useContext(UserContext);
+    const profileMenuRef = useRef(null);
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (
+                profileMenuRef.current &&
+                !profileMenuRef.current.contains(event.target)
+            ) {
+                setProfileExpanded(false);
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [profileMenuRef]);
 
     const handleLogout = async () => {
         try {
@@ -27,15 +44,12 @@ export default function ProfileCard() {
     };
 
     return (
-        <div
-            onMouseEnter={() => setProfileExpanded(true)}
-            onMouseLeave={() => setProfileExpanded(false)}
-            className='relative inline-block'
-        >
+        <div className='relative inline-block' ref={profileMenuRef}>
             <img
-                src={user ? user.avatar : ''}
+                src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'
                 alt='User avatar'
-                className='w-10 h-10 rounded-full'
+                className='w-8 h-8 rounded-full'
+                onClick={() => setProfileExpanded(!isProfileExpanded)}
             />
             {isProfileExpanded && (
                 <div className='absolute top-10 right-0 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
