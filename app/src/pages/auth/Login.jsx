@@ -89,7 +89,7 @@ export default function Login() {
                         />
                     </div>
                     <div className='flex items-center justify-center mt-8'>
-                        <CustomButton>Log in</CustomButton>
+                        <CustomButton>Anmelden</CustomButton>
                     </div>
                 </form>
                 <div className='mt-4 flex flex-col items-center justify-center'>
@@ -99,12 +99,12 @@ export default function Login() {
                     >
                         Passwort vergessen?
                     </button>
-                    <p className='text-sm'>Don't have an account?</p>
+                    <p className='text-sm'>Noch kein Account?</p>
                     <button
                         onClick={() => navigate('/signup')}
                         className='text-sm text-blue-500 hover:underline'
                     >
-                        Sign up
+                        Registrieren
                     </button>
                 </div>
             </div>
