@@ -2,6 +2,7 @@ import React from 'react';
 import Scrollspy from 'react-scrollspy';
 import { useElapsedTime } from './useElapsedTime';
 import ProfileCard from './cards/ProfileCard';
+import NotificationCard from './cards/NotificationCard';
 
 const Navbar = ({ handleNavLinkClick }) => {
     const timeElapsed = useElapsedTime();
@@ -40,6 +41,7 @@ const Navbar = ({ handleNavLinkClick }) => {
             </div>
             <div className='navbar-end hidden lg:flex'>
                 <ul className='menu menu-horizontal px-1'>
+                    <NotificationCard />
                     <Scrollspy
                         items={['section1', 'section2', 'section3', 'section4']}
                         currentClassName='font-bold'
