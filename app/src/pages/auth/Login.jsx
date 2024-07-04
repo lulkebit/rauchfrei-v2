@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
 import CustomButton from '../../components/CustomButton';
+import Logo from '../../components/Logo';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -40,9 +41,11 @@ export default function Login() {
     return (
         <div className='svgBackground min-h-screen flex items-center justify-center bg-gray-100'>
             <div className='bg-white p-8 rounded-lg shadow-md w-full max-w-md'>
-                <h2 className='text-2xl font-semibold text-center text-gray-700 mb-8'>
+                <h2 className='text-2xl font-semibold text-center text-gray-700 mb-4'>
                     Willkommen zurück!
                 </h2>
+
+                <Logo />
 
                 <form className='mb-4' onSubmit={loginUser}>
                     <div className='mb-4'>
