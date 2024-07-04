@@ -1,20 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 function NotificationCard() {
     const [isNotificationExpanded, setNotificationExpanded] = useState(false);
+    const notificationMenuRef = useRef(null);
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (
+                notificationMenuRef.current &&
+                !notificationMenuRef.current.contains(event.target)
+            ) {
+                setNotificationExpanded(false);
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [notificationMenuRef]);
 
     return (
-        <div
-            onMouseEnter={() => setNotificationExpanded(true)}
-            onMouseLeave={() => setNotificationExpanded(false)}
-            className='relative inline-block'
-        >
+        <div ref={notificationMenuRef} className='relative inline-block'>
             <svg
                 xmlns='http://www.w3.org/2000/svg'
-                className='h-5 w-5 mr-2'
+                className='h-5 w-5 mr-2 cursor-pointer'
                 fill='none'
                 viewBox='0 0 24 24'
                 stroke='currentColor'
+                onClick={() => setNotificationExpanded(!isNotificationExpanded)}
             >
                 <path
                     strokeLinecap='round'
