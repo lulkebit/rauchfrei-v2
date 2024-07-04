@@ -248,7 +248,7 @@ export default function Signup() {
                             </p>
                             <button
                                 onClick={() => navigate('/login')}
-                                className='text-sm link link-primary'
+                                className='text-sm text-blue-500 hover:underline'
                             >
                                 Anmelden
                             </button>

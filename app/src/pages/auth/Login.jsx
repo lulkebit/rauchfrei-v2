@@ -105,7 +105,7 @@ export default function Login() {
                     <p className='text-sm'>Noch kein Account?</p>
                     <button
                         onClick={() => navigate('/signup')}
-                        className='text-sm link link-primary'
+                        className='text-sm text-blue-500 hover:underline'
                     >
                         Registrieren
                     </button>
