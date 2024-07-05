@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Drawer } from 'vaul';
 import { v4 as uuidv4 } from 'uuid';
+import { toast } from 'react-hot-toast';
 import SavingsInput from '../components/inputs/SavingsInputs';
 import ProgressBarMoney from '../components/bars/ProgressBarMoney';
 import CustomButton from '../components/CustomButton';
@@ -37,6 +38,7 @@ const SavingGoals = () => {
             setSparziel('');
             setPreis('');
             setError('');
+            toast.success('Sparziel hinzugefügt.');
         } else {
             setError('Please fill in both fields.');
         }
@@ -49,6 +51,7 @@ const SavingGoals = () => {
             newCards.splice(index, 1);
             setCards(newCards);
             localStorage.setItem('cards', JSON.stringify(newCards));
+            toast.error('Sparziel gelöscht.');
         }
     };
 
