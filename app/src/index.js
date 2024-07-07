@@ -1,4 +1,5 @@
-import React from 'react';
+// Step 1: Organize Imports
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
     BrowserRouter as Router,
@@ -6,18 +7,25 @@ import {
     Route,
     Navigate,
 } from 'react-router-dom';
-
-import './index.css';
-
-import App from './App';
-import Signup from './pages/auth/Signup';
-import Login from './pages/auth/Login';
-import Settings from './pages/Settings';
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 import { UserContextProvider } from './context/userContext';
-import Debug from './pages/auth/debug';
-import PrivateRoute from './components/PrivateRoute';
+import './index.css';
+
+const App = lazy(() => import('./App'));
+const Signup = lazy(() => import('./pages/auth/Signup'));
+const Login = lazy(() => import('./pages/auth/Login'));
+const Settings = lazy(() => import('./pages/Settings'));
+const Debug = lazy(() => import('./pages/auth/debug'));
+
+const routes = [
+    { path: '/dashboard', element: App },
+    { path: '/signup', element: Signup },
+    { path: '/login', element: Login },
+    { path: '/debug', element: Debug },
+    { path: '/settings', element: Settings },
+    { path: '/', element: Navigate, to: '/dashboard' },
+];
 
 axios.defaults.baseURL = 'http://localhost:8000';
 axios.defaults.withCredentials = true;
@@ -27,14 +35,23 @@ root.render(
     <UserContextProvider>
         <Toaster position='bottom-right' toastDuration={{ duration: 2000 }} />
         <Router>
-            <Routes>
-                <Route path='/dashboard' element={<App />} />
-                <Route path='/signup' element={<Signup />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/debug' element={<Debug />} />
-                <Route path='/settings' element={<Settings />} />
-                <Route exact path='/' element={<Navigate to='/dashboard' />} />
-            </Routes>
+            <Suspense
+                fallback={
+                    <div className='flex justify-center items-center h-screen bg-gray-100'>
+                        <div className='animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-green-500'></div>
+                    </div>
+                }
+            >
+                <Routes>
+                    {routes.map((route, index) => (
+                        <Route
+                            key={index}
+                            path={route.path}
+                            element={<route.element to={route.to} />}
+                        />
+                    ))}
+                </Routes>
+            </Suspense>
         </Router>
     </UserContextProvider>
 );
