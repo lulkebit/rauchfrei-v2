@@ -29,6 +29,31 @@ function App() {
         });
     }
 
+    const yearlySavingsAvg = 1800; // https://www.abnr.de/weltnichtrauchertag/2017-rauchen-kostet-nichtrauchen-kostet-nichts/#:~:text=Individuelle%20Kosten,dies%20entspricht%20jedem%20siebten%20Todesfall.
+    let yearlySavings = localStorage.getItem('yearlySavings');
+    yearlySavings = Number(yearlySavings);
+    let savingDesc = '';
+
+    if (!isNaN(yearlySavings)) {
+        const percentageDifference =
+            ((yearlySavings - yearlySavingsAvg) / yearlySavingsAvg) * 100;
+
+        if (percentageDifference > 0) {
+            savingDesc = `↗︎ Sie sparen ${percentageDifference.toFixed(
+                2
+            )}% mehr als der Durchschnitt.`;
+        } else if (percentageDifference < 0) {
+            savingDesc = `↘︎ Sie sparen ${Math.abs(
+                percentageDifference
+            ).toFixed(2)}% weniger als der Durchschnitt.`;
+        } else {
+            savingDesc = `= Sie sparen genauso viel wie der Durschnitt.`;
+        }
+    } else {
+        savingDesc =
+            'Jährliche Ersparnisse sind nicht definiert oder keine gültige Zahl.';
+    }
+
     return (
         <div>
             {user ? (
@@ -52,7 +77,7 @@ function App() {
                                     <Stat
                                         title='Ersparnis'
                                         value={<FinancialCard />}
-                                        description='↗︎ 8,7% mehr als der Durchschnitt'
+                                        description={savingDesc}
                                         icon={
                                             <FaMoneyBill className='text-green-500' />
                                         }
