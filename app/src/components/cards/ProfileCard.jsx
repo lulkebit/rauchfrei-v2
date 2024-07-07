@@ -3,9 +3,15 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
 import { toast } from 'react-hot-toast';
+import SettingsCard from './SettingsCard';
 
 export default function ProfileCard() {
     const [isProfileExpanded, setProfileExpanded] = useState(false);
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+    const openSettings = () => setIsSettingsOpen(true);
+    const closeSettings = () => setIsSettingsOpen(false);
+
     const navigate = useNavigate();
     const { user } = useContext(UserContext);
     const profileMenuRef = useRef(null);
@@ -98,13 +104,16 @@ export default function ProfileCard() {
                         >
                             Profil
                         </Link>
-                        <Link
-                            to='/settings'
-                            className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
-                            role='menuitem'
+                        <button
+                            className='btn btn-primary'
+                            onClick={openSettings}
                         >
-                            Einstellungen
-                        </Link>
+                            Open Settings
+                        </button>
+                        <SettingsCard
+                            isOpen={isSettingsOpen}
+                            onClose={closeSettings}
+                        />
                         <button
                             onClick={handleLogout}
                             className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
