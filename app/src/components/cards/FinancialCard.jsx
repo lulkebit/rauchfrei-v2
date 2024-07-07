@@ -35,6 +35,7 @@ function FinancialCard() {
             const packsPerDay = cigarettesPerDay / cigsPerPack;
 
             const yearlySavings = packsPerYear * pricePerPack;
+            localStorage.setItem('yearlySavings', yearlySavings);
             const monthlySavings = packsPerMonth * pricePerPack;
             const dailySavings = packsPerDay * pricePerPack;
 
