@@ -13,6 +13,7 @@ const registerUser = async (req, res) => {
             pricePerPack,
             dateOfReturn,
         } = req.body;
+
         // check if name was entered
         if (!name) {
             return res.json({
@@ -94,7 +95,6 @@ const loginUser = async (req, res) => {
                     res.cookie('token', token).json(user);
                 }
             );
-            // console.log('User logged in:', user);
         } else {
             return res.json({
                 error: 'Invalid Password',
