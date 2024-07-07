@@ -19,14 +19,15 @@ function App() {
         }
     };
 
-    const readableDate = new Date(user.dateOfReturn).toLocaleDateString(
-        'de-DE',
-        {
+    let readableDate = null;
+
+    if (user) {
+        readableDate = new Date(user.dateOfReturn).toLocaleDateString('de-DE', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
-        }
-    );
+        });
+    }
 
     return (
         <div>
