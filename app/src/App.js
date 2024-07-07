@@ -19,6 +19,15 @@ function App() {
         }
     };
 
+    const readableDate = new Date(user.dateOfReturn).toLocaleDateString(
+        'de-DE',
+        {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        }
+    );
+
     return (
         <div>
             {user ? (
@@ -34,7 +43,7 @@ function App() {
                                     <Stat
                                         title='Rauchfreie Zeit'
                                         value={<SmokeFreeTimeCard />}
-                                        description='Seit TT.MM.JJJJ'
+                                        description={`Seit dem ${readableDate}`}
                                         icon={
                                             <FaClock className='text-blue-500' />
                                         }
