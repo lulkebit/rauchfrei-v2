@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useRef, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { UserContext } from '../../context/userContext';
@@ -14,6 +14,8 @@ const SettingsCard = ({ isOpen, onClose }) => {
         pricePerPack: user.pricePerPack || '',
         dateOfReturn: user.dateOfReturn || '',
     });
+
+    const cardRef = useRef(null);
 
     const handleInputChange = (event) => {
         setFormData({
@@ -33,11 +35,26 @@ const SettingsCard = ({ isOpen, onClose }) => {
         }
     };
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (cardRef.current && !cardRef.current.contains(event.target)) {
+                onClose();
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () =>
+            document.removeEventListener('mousedown', handleClickOutside);
+    }, [onClose]);
+
     if (!isOpen) return null;
 
     return (
         <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
-            <div className='bg-white rounded-lg shadow-xl p-6 w-96'>
+            <div
+                className='bg-white rounded-lg shadow-xl p-6 w-96'
+                ref={cardRef}
+            >
                 <h2 className='text-2xl font-bold mb-4'>Einstellungen</h2>
 
                 <div className='grid grid-cols-1 gap-4'>
