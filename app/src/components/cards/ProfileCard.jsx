@@ -91,6 +91,13 @@ export default function ProfileCard() {
                         >
                             Log In
                         </Link>
+                        <Link
+                            to='/debug'
+                            className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                            role='menuitem'
+                        >
+                            Debugpage
+                        </Link>
                         <a
                             className='block px-4 py-2 text-sm text-gray-700'
                             role='menuitem'
@@ -105,10 +112,10 @@ export default function ProfileCard() {
                             Profil
                         </Link>
                         <button
-                            className='btn btn-primary'
+                            className='block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
                             onClick={openSettings}
                         >
-                            Open Settings
+                            Einstellungen
                         </button>
                         <SettingsCard
                             isOpen={isSettingsOpen}
@@ -116,7 +123,7 @@ export default function ProfileCard() {
                         />
                         <button
                             onClick={handleLogout}
-                            className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                            className='block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
                             role='menuitem'
                         >
                             Logout
