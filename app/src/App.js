@@ -59,7 +59,10 @@ function App() {
             {user ? (
                 <>
                     <Navbar handleNavLinkClick={handleNavLinkClick} />
-                    <section id='section1' className='h-screen bg-gray-100'>
+                    <section
+                        id='section1'
+                        className='h-screen bg-gray-100 wavesDashboard'
+                    >
                         <div className='min-h-screen flex flex-col items-center justify-center mx-8'>
                             <h1 className='text-4xl font-bold mb-8'>
                                 Hallo {user.name}!
