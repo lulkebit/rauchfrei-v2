@@ -7,7 +7,12 @@ import ConsumeCard from './components/cards/ConsumeCard';
 import Health from './pages/Health';
 import SavingGoals from './pages/SavingGoals';
 import { Stat, StatGroup } from './components/Stats';
-import { FaClock, FaMoneyBill, FaSmokingBan } from 'react-icons/fa';
+import {
+    FaArrowCircleDown,
+    FaClock,
+    FaMoneyBill,
+    FaSmokingBan,
+} from 'react-icons/fa';
 
 function App() {
     const { user } = useContext(UserContext);
@@ -64,7 +69,7 @@ function App() {
                         className='h-screen bg-gray-100 wavesDashboard'
                     >
                         <div className='min-h-screen flex flex-col items-center justify-center mx-8'>
-                            <h1 className='text-4xl font-bold mb-8'>
+                            <h1 className='text-4xl font-bold mb-8 -mt-48'>
                                 Hallo {user.name}!
                             </h1>
                             <div className='container mx-auto p-4'>
@@ -94,6 +99,15 @@ function App() {
                                         }
                                     />
                                 </StatGroup>
+                            </div>
+                            <div className=''>
+                                <button
+                                    onClick={() =>
+                                        handleNavLinkClick('section2')
+                                    }
+                                >
+                                    <FaArrowCircleDown className='text-white'></FaArrowCircleDown>
+                                </button>
                             </div>
                         </div>
                     </section>
