@@ -53,7 +53,7 @@ function FinancialCard() {
             Dein jährliches Ersparnis beläuft sich auf <b>{annualSavings}€</b>.
             <br />
             Das sind <b>{monthlySavings}€</b> im Monat bzw.
-            <b>{dailySavings}€</b> am Tag!
+            <b> {dailySavings}€</b> am Tag!
         </p>
     );
 }
